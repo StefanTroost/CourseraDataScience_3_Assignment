@@ -1,0 +1,33 @@
+---
+title: "CodeBook"
+author: "Stefan Troost"
+date: "Sunday, June 22, 2014"
+output: html_document
+---
+
+# Remarks on the dataset
+## Datasets used
+From the UCI HAR dataset both the training data "X_train.txt" and the test data "X_test.txt" are used. Furthermore, the files with subject order, "subject_train.txt" and "subject_test.txt", and the files with activity info, "y_train.txt" and "y_test.txt" have been used. Finally, the list of activity names has been retrieved from "activity_labels.txt"
+
+## Order of processing
+To address the questions in the assignment I have decided:
+
+1. Not follow the strict order of the questions, as this turns out to be much simpler when merging the training set and test set. Reason for this is that the merge method changes the order of the data (see also [remarks of David Hood] (https://class.coursera.org/getdata-004/forum/thread?thread_id=106)
+2. Keep the train and test characteristics of both datasets in the merged dataset with the field "purpose" (= "train" or "test"). I think this would make sense when using the data for later analysis. This implies that the aggregation in the final dataset is done on activity, subject and also purpose
+
+
+Steps taken in run_analysis.R are sequentially:
+
+* Read the training dataset and test dataset
+* Read feature names from the file features.txt and set them as column names for both the training set and test set
+* Enrich both sets with activity info
+* Enrich both sets with subject info
+* Enrich both sets with purpose info
+* Bind the training set and testset with rbind
+* Now merge both sets with the activityLabels set
+* Extract only the measurements on the mean and standard deviation for each observation 
+* Create a second, independent tidy data set with the average of each variable for each activity and each subject. 
+
+## How the resulting dataset can be used for further analysis
+The output file "mergedAveragedTidyData.txt" can be read with a simple read.table statement
+

@@ -1,0 +1,13 @@
+---
+title: "readme"
+author: "Stefan Troost"
+date: "Sunday, June 22, 2014"
+output: html_document
+---
+
+## Scripts included
+There is only one script relevant, run_analysis.R. This script runs all the steps asked for in the assignment, albeit not in the same order. This is done at prurpose. For more info see the CodeBook.md document
+
+## Reading the mergedAveragedTidyData.txt file
+The .txt is prepared in such a way that it can be read in with a simple read.table statement:
+read.table("mergedAveragedTidyData.txt", header=TRUE)
